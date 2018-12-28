@@ -6,7 +6,7 @@ from openpyxl.styles import colors
 from openpyxl.cell import Cell
 
 dayShift = {'6a':23, '6:30a':23, '7a':23, '7:30a':23, '8a': 23, '8:15a': 24, '8:30a': 25, '8:45a': 26, '9a': 27, '9:15a': 28, '9:30a': 29, '9:45a': 30, '10a': 31, '10:15a': 32, '10:30a': 33, '10:45a': 34, '11a': 35, '11:15a': 36, '11:30a': 37, '11:45a': 38, '12p': 39, '12:15p': 40, '12:30p':41, '12:45p':42, '1p':43, '1:15p': 44, '1:30p': 45, '1:45p': 46, '2p': 47, '2:15p': 48, '2:30p': 49, '2:45p': 50, '3p': 51, '3:15p': 52, '3:30p': 53, '3:45p': 54, '4p': 55, '4:15p': 56, '4:30p': 57, '4:45p': 58, '5p': 59, '5:15p': 60, '5:30p': 61, '5:45p': 61, '6p': 61, '6:15p': 61, '6:30p': 61, '6:45p': 61, '7p': 61, '7:15p': 61, '7:30p':61, '7:45p':61, '8p':61, '8:15p':61, '8:30p': 61, '8:45p':61, '9p': 61, '9:15p':61, '9:30p': 61, '9:45p': 61, '10p': 61, '10:15p': 61, '10:30p':61, '10:45p':61, '11p': 61, '11:15p':61, '11:30p': 61, '11:45p':61, '12a':61}           
-eveningShift = {'9a':23, '9:15a':23, '9:30a': 23, '10a':23, '10:30a':23, '11a':23, '11:30a':23, '12p':23, '12:30p':23, '1p':23, '1:30p':23, '2p':23, '2:30p':23, '3p':23, '3:30p':23, '4p':23, '4:30p':23, '5p':23, '5:15p':24, '5:30p':25, '5:45p':26, '6p':27, '6:15p':28, '6:30p':29, '6:45p':30, '7p':31, '7:15p':32, '7:30p': 33, '7:45p':34, '8p':35, '8:15p':36, '8:30p':37, '8:45p':38, '9p':39, '9:15p':40, '9:30p':41, '9:45p':42, '10p':43, '10:15p':44, '10:30p':45, '10:45p':46, '11p':47, '11:15p': 48, '11:30p': 49, '11:45p':50, '12a':51}
+eveningShift = {'8a':23, '8:15':23, '8:30a':23, '9a':23, '9:15a':23, '9:30a': 23, '10a':23, '10:30a':23, '11a':23, '11:30a':23, '12p':23, '12:30p':23, '1p':23, '1:30p':23, '2p':23, '2:30p':23, '3p':23, '3:30p':23, '4p':23, '4:30p':23, '5p':23, '5:15p':24, '5:30p':25, '5:45p':26, '6p':27, '6:15p':28, '6:30p':29, '6:45p':30, '7p':31, '7:15p':32, '7:30p': 33, '7:45p':34, '8p':35, '8:15p':36, '8:30p':37, '8:45p':38, '9p':39, '9:15p':40, '9:30p':41, '9:45p':42, '10p':43, '10:15p':44, '10:30p':45, '10:45p':46, '11p':47, '11:15p': 48, '11:30p': 49, '11:45p':50, '12a':51}
 dayShiftTimes = list(dayShift.keys())
 dayShiftCells =list(dayShift.values())
 eveningShiftTimes = list(eveningShift.keys())
@@ -188,11 +188,11 @@ def addShifts(weekday):
 			start = 30
 			eveStart = 30
 		elif staff == lksPoint:
-			start = 37
-			eveStart = 37
+			start = 39
+			eveStart = 39
 		elif staff == animals:
-			start = 40
-			eveStart = 40
+			start = 42
+			eveStart = 42
 		
 		
 		
@@ -234,27 +234,28 @@ def addShifts(weekday):
 		elif staff == lks:
 			start = 30
 		elif staff == lksPoint:
-			start = 37
+			start = 39
 		elif staff == animals:
-			start = 40
+			start = 42
 		
 		end = start
+		eveEnd = start
 		
 		for i in range(start, start+30):
-			if dpop.cell(row=21, column=i).value != None:
+			if dpop.cell(row=22, column=i).value != None:
 				end += 1
 			else:
 				break
 		
-			
-		print('start is ' + str(start))
-		print('end is ' + str(end))
-		
-		for h in range(start, end):
-			shift = dpop.cell(row=22, column = h).value.split()
-			
-			trimShift = dayShiftCells[dayShiftTimes.index(shift[0]): dayShiftTimes.index(shift[-1])]
+		for i in range(start, start+30):
+			if eveningdpop.cell(row=22, column=i).value != None:
+				eveEnd += 1
+			else:
+				break
 				
+		for h in range(start, end):
+			shift = dpop.cell(row=22, column = h).value.split()	
+			trimShift = dayShiftCells[dayShiftTimes.index(shift[0]): dayShiftTimes.index(shift[-1])]
 			for i in range(23,61):
 				if i in trimShift:
 					pass
@@ -265,7 +266,20 @@ def addShifts(weekday):
 		
 		for i in range(start, end):
 			dpop.cell(row=22, column=i).value = dpop.cell(row=22, column=i).value.split()[0][:-1] + ' ' + dpop.cell(row=22, column=i).value.split()[-1][:-1]
-			
+		
+		try:
+			for h in range(start, eveEnd):
+				eveShift = eveningdpop.cell(row=22, column=h).value.split()
+				eveTrim = eveningShiftCells[eveningShiftTimes.index(eveShift[0]): eveningShiftTimes.index(eveShift[-1])]	
+				for i in range(23, 41):
+					if i in eveTrim:
+						pass
+					else:
+						eveningdpop.cell(row=i, column=h).fill = greyFill
+						eveningdpop.cell(row=i, column=h).border = borderGone
+						eveningdpop.cell(row=i, column=h).value = ''
+		except:
+			pass
 			
 	trimDayDpops(ept)
 	trimDayDpops(theaters)
@@ -273,28 +287,22 @@ def addShifts(weekday):
 	trimDayDpops(lksPoint)
 	trimDayDpops(animals)
 
-	
-	
-	
+#Run the program and make the shells	
 browser = webdriver.Chrome()
 browser.get('http://wheniwork.com/login')
-
 week = openpyxl.load_workbook('C:\\Users\\JOsbor01\\Desktop\\AutoShells\\AutoShellsMaster.xlsx')
 
-	
 saveAs = input('What should I save this week as?')
 
-#addShifts('Thursday')
-#addShifts('Friday')
-#addShifts('Saturday')
-#addShifts('Sunday')
-#addShifts('Monday')
-#addShifts('Tuesday')
+addShifts('Thursday')
+addShifts('Friday')
+addShifts('Saturday')
+addShifts('Sunday')
+addShifts('Monday')
+addShifts('Tuesday')
 addShifts('Wednesday')
 
 week.save('C:\\Users\\JOsbor01\\Desktop\\AutoShells\\' + saveAs + '.xlsx')
 
-print('Test is Done')
-	
-	
+print('Shells are Done')
 	
