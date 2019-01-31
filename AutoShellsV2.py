@@ -290,6 +290,7 @@ def addShifts(weekday):
 #Run the program and make the shells	
 browser = webdriver.Chrome()
 browser.get('http://wheniwork.com/login')
+#change this file path to where you have the AutoShellsmaster file
 week = openpyxl.load_workbook('C:\\Users\\JOsbor01\\Desktop\\AutoShells\\AutoShellsMasterExample.xlsx')
 
 saveAs = input('What should I save this week as?')
@@ -302,6 +303,7 @@ addShifts('Monday')
 addShifts('Tuesday')
 addShifts('Wednesday')
 
+#Change this to match where you want to save the file to.
 week.save('C:\\Users\\JOsbor01\\Desktop\\AutoShells\\' + saveAs + '.xlsx')
 
 print('Shells are Done')
