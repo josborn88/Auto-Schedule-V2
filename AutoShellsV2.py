@@ -290,7 +290,7 @@ def addShifts(weekday):
 #Run the program and make the shells	
 browser = webdriver.Chrome()
 browser.get('http://wheniwork.com/login')
-week = openpyxl.load_workbook('C:\\Users\\JOsbor01\\Desktop\\AutoShells\\AutoShellsMaster.xlsx')
+week = openpyxl.load_workbook('C:\\Users\\JOsbor01\\Desktop\\AutoShells\\AutoShellsMasterExample.xlsx')
 
 saveAs = input('What should I save this week as?')
 
