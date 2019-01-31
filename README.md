@@ -1,12 +1,12 @@
-# AutoShellsV2
-This is a small program I created to automatically create outlines for the daily schedules for a science museum.
+# AutoShells V2, what it is
+This is a small program I made to help create daily schedules for my workplace. It creates the shells, or the rough outlines for each day. The daily schedules are made in Excel and our weekly schedules are created with WhenIwork.com. This program scrapes the data from WhenIWork and adds it to the Excel documents. From there the shells are filled in based on who is trained on what activities we are doing that day. I am working on a program to fill in each day, you can find that project on my GitHub under AutoPops.
 
-It launches a browser to WhenIWork.com, scrapes the schedule information for the week, and then takes that data and fills in an Excel document that is used for the daily schedule.
+This is the second iteration I have made for this task. The first version was much longer at over 1000 lines of code. After learning more about Python and programming in general I went back and rewrote it, this being the result.
 
-This is the second iteration I have made for this task. The first version was muh longer (over 1000 lines of code) and so hard to maintain and adapt and our need changed.
+# Prerequisites
+AutoShells runs in Pyhon 3.6 or higher. It also requieres the Selenium and OpenPyXl packages. To manipulate the Excel files you need Microsoft Excel, though any program that reads/writes .xlsx files should work decently.
 
-To run the program you need Python with openpyxl and selenium installed. Run the Python script, it will launch a web browser and take you to WhenIWork.com, after you log in and navigate to the week you want to create schedules for. Return to Python and tell it what to save our schdule as (E.G. Schedule 2.1.19-2.6.19) and it will gather the date, parse it out, and will in the Excel file.
 
-In this repository is a blank Excel scheudle and an example of one filled in by this program. After the data is filled in you can reove the extra columns and add any notes or shift specific needs to the day. 
+# Installing
 
-While ther eare a few bugs to fix still an d I would like to add a few axtra features overall I am happy with this program.
+To install download the Python script and the 
