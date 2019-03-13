@@ -19,3 +19,12 @@ class ClosingShift:
 		self.backFillTwo = PatternFill(start_color = colorTwo, end_color = colorTwo, fill_type = 'solid')
 		self.database = database
 		self.rowKnow = rowKnow
+		
+class ShowShift:
+	def __init__(self, name, color, shiftStart, shiftEnd, database, rowKnow):
+		self.name = name
+		self.backFill = PatternFill(start_color = color, end_color = color, fill_type = 'solid')
+		self.start = shiftStart
+		self.end = shiftEnd
+		self.database = database
+		self.rowKnow = rowKnow

@@ -2,9 +2,8 @@ import openpyxl, config
 from openpyxl.styles import Font
 def eptTest():
 
-
 #test the dpop to make sure critical things are made
-	wb = openpyxl.load_workbook(config.dbPath + '\\process\\' + config.whatDay + ' EPT.xlsx')
+	wb = openpyxl.load_workbook('C:\\Users\\JOsbor01\\Desktop\\AutoPop\\process\\' + config.whatDay + ' EPT.xlsx')
 	ws = wb[wb.sheetnames[0]]
 	
 	Dinos = 1
@@ -54,7 +53,7 @@ def eptTest():
 def lksTest():
 
 #test the dpop to make sure critical things are made
-	wb = openpyxl.load_workbook(config.dbPath + '\\finished\\' + config.whatDay + '.xlsx')
+	wb = openpyxl.load_workbook('C:\\Users\\JOsbor01\\Desktop\\AutoPop\\finished\\' + config.whatDay + '.xlsx')
 	ws = wb[wb.sheetnames[0]]
 	
 	desk = 0

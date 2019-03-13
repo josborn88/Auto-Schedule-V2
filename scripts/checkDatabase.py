@@ -18,7 +18,7 @@ def checkTraining(shift):
 	knows = []
 	
 	for i in range(2, 51):
-		if (training.cell(row = i, column = shift.rowKnow).value == True) or (training.cell(row = i, column = shift.rowKnow).value != None):
+		if (training.cell(row = i, column = shift.rowKnow).value == True) or ((training.cell(row = i, column = shift.rowKnow).value != None) and (training.cell(row = i, column = shift.rowKnow).value != False)):
 			knows.append(training.cell(row=i,column=2).value.split()[0] + ' ' + training.cell(row=i,column=2).value.split()[1][0])
 	
 	return knows
