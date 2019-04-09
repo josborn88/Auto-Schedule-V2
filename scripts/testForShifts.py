@@ -33,7 +33,7 @@ def eptTest():
 				continue
 	for i in range(config.floorStart, config.floorEnd):
 		for h in range(35, 59, 2):
-			if ws.cell(row = h,column = i).value == "HWU" or ws.cell(row = h,column = i).value == "HWU CL":
+			if ws.cell(row = h,column = i).value == "HWU" or ws.cell(row = h,column = i).value == "Cl HWU":
 				HWU += 1
 			else:
 				continue
@@ -83,7 +83,7 @@ def lksTest():
 	
 				
 	#Check the sums of the shift to make sure everything is assigned correctly
-	if desk == 7 and bkl == 7 and studio == 7:
+	if desk == 7 and bkl == 7 and studio == 6:
 		return True
 	else:
 		return False

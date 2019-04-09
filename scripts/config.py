@@ -43,6 +43,7 @@ borderGoneBBold = Border(left=Side(border_style='thin', color='000000'),
 
 greyFill = PatternFill(start_color="C0C0C0", end_color = 'C0C0C0', fill_type='solid')
 blankFill = PatternFill(start_color = "FFFFFFFF", end_color = 'FFFFFFFF', fill_type = 'solid')
+meetingFill = PatternFill(start_color = '00FFFF00', end_color = '00FFFF00', fill_type = 'solid')
 #set start and end of EPT colums
 
 whatDay=input('What day are we making?')
